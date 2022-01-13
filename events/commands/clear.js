@@ -20,22 +20,26 @@ async function create() {
 async function invoke(interaction) {
 	const amount = interaction.options.getNumber('amount');
 
+	// Check if the user executing the command has the required permissions to do so
 	if (!interaction.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES))
 		return interaction.reply({
 			content: 'You are not allowed to delete messages!',
 			ephemeral: true,
 		});
 
+	// Check if the amount parameter is >= 1
 	if (amount < 1)
 		return interaction.reply({
 			content: 'I must delete one or more messages!',
 			ephemeral: true,
 		});
 
+	// Delete the given amount of messages
 	await interaction.channel.bulkDelete(amount).catch((err) => {
 		console.error(err);
 	});
 
+	// Reply with a confirmation
 	interaction.reply({
 		content: `I deleted ${amount} messages for you!`,
 		ephemeral: true,

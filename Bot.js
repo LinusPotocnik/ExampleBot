@@ -15,6 +15,7 @@ const events = fs
 	// Check for an event and execute the corresponding file in ./events
 	for (let event of events) {
 		const eventFile = await import(`#events/${event}`);
+		// But first check if it's an event emitted once
 		if (eventFile.once)
 			client.once(eventFile.name, (...args) => {
 				eventFile.invoke(...args);

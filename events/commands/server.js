@@ -16,6 +16,7 @@ async function create() {
 async function invoke(interaction) {
 	const guild = interaction.guild;
 
+	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
 	const embed = new MessageEmbed()
 		.setTitle(guild.name)
 		.addField('Members', guild.memberCount.toString(), true)
@@ -43,6 +44,9 @@ async function invoke(interaction) {
 		.addField('Discord Partner', guild.partnered ? 'Yes' : 'No', true)
 		.addField('Verified', guild.verified ? 'Yes' : 'No', true);
 
+	// Edit some properties of the embed to make it a bit prettier
+	// Note: This could be done at the creation of the object, but I split it to make it a bit clearer
+	// #noShameOfSelfPromotion (go on and delete it lol)
 	embed
 		.setColor('AQUA')
 		.setFooter({ text: 'Find the source code of this bot on our GitHub!' })
@@ -54,6 +58,7 @@ async function invoke(interaction) {
 		})
 		.setImage(guild.iconURL());
 
+	// Reply to the user
 	interaction.reply({
 		embeds: [embed],
 	});
