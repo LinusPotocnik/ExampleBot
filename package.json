@@ -1,13 +1,10 @@
 {
   "name": "examplebot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple, easily extendable bot for your needs!",
   "main": "Bot.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
-  "author": "",
+  "author": "Linus Potocnik",
   "license": "MIT",
   "dependencies": {
     "@discordjs/builders": "^0.11.0",
