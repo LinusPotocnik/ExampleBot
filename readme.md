@@ -1,5 +1,7 @@
 # Discord.js v13 Example Bot
 
+[Extra info](https://github.com/LIFEBOTDEV/ExampleBot/releases/latest)
+
 ## Table of Contents
 
 - [Installing the bot](#install)
