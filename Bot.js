@@ -14,6 +14,7 @@ const events = fs
 (async () => {
 	// Check for an event and execute the corresponding file in ./events
 	for (let event of events) {
+		// The #events ES6 import-abbreviation is defined in the package.json
 		const eventFile = await import(`#events/${event}`);
 		// But first check if it's an event emitted once
 		if (eventFile.once)
