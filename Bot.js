@@ -1,9 +1,9 @@
 import {} from 'dotenv/config';
 import fs from 'fs';
-import { Client, Intents } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 
 // Create a new Client with the Guilds intent
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Fetch all js files in ./events
 const events = fs

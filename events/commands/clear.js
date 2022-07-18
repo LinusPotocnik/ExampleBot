@@ -1,8 +1,7 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { Permissions } from 'discord.js';
+import { PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
-async function create() {
+const create = () => {
 	const command = new SlashCommandBuilder()
 		.setName('clear')
 		.setDescription('Deletes the given amount of messages!')
@@ -14,14 +13,14 @@ async function create() {
 		);
 
 	return command.toJSON();
-}
+};
 
 // Called by the interactionCreate event listener when the corresponding command is invoked
-async function invoke(interaction) {
+const invoke = async (interaction) => {
 	const amount = interaction.options.getNumber('amount');
 
 	// Check if the user executing the command has the required permissions to do so
-	if (!interaction.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES))
+	if (!interaction.member.permissions.has(PermissionFlagsBits.ManageMessages))
 		return interaction.reply({
 			content: 'You are not allowed to delete messages!',
 			ephemeral: true,
@@ -44,6 +43,6 @@ async function invoke(interaction) {
 		content: `I deleted ${amount} messages for you!`,
 		ephemeral: true,
 	});
-}
+};
 
 export { create, invoke };

@@ -15,16 +15,13 @@
 
 ## Install
 
-Before you follow this, make sure you use [NodeJS](#install-nodejs-and-npm) version 16.6.0 or higher and [npm](#install-nodejs-and-npm) version 8 or higher. You can check your installed versions of both by running `npm version`
+Before you follow this, make sure you use [NodeJS](#install-nodejs-and-npm) version 16.9.0 or higher and [npm](#install-nodejs-and-npm) version 8 or higher. You can check your installed versions of both by running `npm version`
 
 - `git clone https://github.com/LIFEBOTDEV/ExampleBot.git`
 - `cd ExampleBot`
 - `npm install`
-- `echo "BOT_TOKEN=YOUR_BOT_TOKEN" >> .env ; echo "CLIENTID=YOUR_CLIENT_ID" >> .env`
-- `node deploy-commands.js`
+- `echo "BOT_TOKEN=YOUR_BOT_TOKEN" >> .env`
 - `node .`
-
-Note: After deploying the SlashCommands, it's faster to reinvite your Bot than to wait for Discord's cache to update
 
 ## Find your Bot Token
 
