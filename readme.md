@@ -1,4 +1,4 @@
-# Discord.js v13 Example Bot
+# Discord.js v14 Example Bot
 
 [Extra info](https://github.com/LIFEBOTDEV/ExampleBot/releases/latest)
 
