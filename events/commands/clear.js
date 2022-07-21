@@ -26,21 +26,29 @@ const invoke = async (interaction) => {
 			ephemeral: true,
 		});
 
-	// Check if the amount parameter is >= 1
+	if (!interaction.appPermissions.has(PermissionFlagsBits.ManageMessages))
+		return interaction.reply({
+			content: 'I am not allowed to delete messages!',
+			ephemeral: true,
+		});
+
 	if (amount < 1)
+		// Check if the amount parameter is >= 1
 		return interaction.reply({
 			content: 'I must delete one or more messages!',
 			ephemeral: true,
 		});
 
 	// Delete the given amount of messages
-	await interaction.channel.bulkDelete(amount).catch((err) => {
-		console.error(err);
-	});
+	const deletedMessages = (
+		await interaction.channel.bulkDelete(amount, true).catch((err) => {
+			console.error(err);
+		})
+	).size;
 
 	// Reply with a confirmation
 	interaction.reply({
-		content: `I deleted ${amount} messages for you!`,
+		content: `I deleted ${deletedMessages} messages for you!`,
 		ephemeral: true,
 	});
 };
