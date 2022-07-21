@@ -1,9 +1,11 @@
+import fs from 'fs';
+
 const once = true;
 const name = 'ready';
 
 async function invoke(client) {
 	const commands = fs
-		.readdirSync('./events/interactions/commands')
+		.readdirSync('./events/commands')
 		.filter((file) => file.endsWith('.js'))
 		.map((file) => file.slice(0, -3));
 
