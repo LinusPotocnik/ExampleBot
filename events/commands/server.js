@@ -1,4 +1,5 @@
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { MessageEmbed } from 'discord.js';
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
 const create = () => {
@@ -17,7 +18,7 @@ const invoke = (interaction) => {
 	const guild = interaction.guild;
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
-	const embed = new EmbedBuilder().setTitle(guild.name).addFields([
+	const embed = new MessageEmbed().setTitle(guild.name).addFields([
 		{
 			name: 'Members',
 			value: guild.memberCount.toString(),
@@ -73,7 +74,7 @@ const invoke = (interaction) => {
 	// Note: This could be done at the creation of the object, but I split it to make it a bit clearer
 	// #shamelessSelfpromotion
 	embed
-		.setColor('Aqua')
+		.setColor('AQUA')
 		.setFooter({ text: 'Find the source code of this bot on our GitHub!' })
 		.setTimestamp()
 		.setAuthor({
