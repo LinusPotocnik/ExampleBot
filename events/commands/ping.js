@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { SlashCommandBuilder } from 'discord.js';
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
 const create = () => {
