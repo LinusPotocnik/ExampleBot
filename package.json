@@ -1,6 +1,6 @@
 {
 	"name": "examplebot",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "A simple, easily extendable bot for your needs!",
 	"main": "Bot.js",
 	"keywords": [],
