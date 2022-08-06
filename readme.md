@@ -20,7 +20,7 @@ Before you follow this, make sure you use [NodeJS](#install-nodejs-and-npm) vers
 - `git clone https://github.com/LIFEBOTDEV/ExampleBot.git`
 - `cd ExampleBot`
 - `npm install`
-- `echo "BOT_TOKEN=YOUR_BOT_TOKEN" >> .env`
+- `echo BOT_TOKEN=YOUR_BOT_TOKEN >> .env`
 - `node .`
 
 ## Find your Bot Token
