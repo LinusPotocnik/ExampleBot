@@ -7,8 +7,8 @@
 	"author": "Linus Potocnik",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^14.3.0",
-		"dotenv": "^16.0.2"
+		"discord.js": "^14.7.1",
+		"dotenv": "^16.0.3"
 	},
 	"imports": {
 		"#events/*": "./events/*",
