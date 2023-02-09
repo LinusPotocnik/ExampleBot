@@ -4,6 +4,7 @@
 
 ## Table of Contents
 
+- [Your next steps](#next-steps)
 - [Installing the bot](#install)
 - [Finding your Bot Token](#find-your-bot-token)
 - [Finding your Bot ID](#find-your-bot-id)
@@ -12,6 +13,23 @@
 - [Updating NodeJS](#update-nodejs)
 - [Updating npm](#update-npm)
 - [Installing git](#install-git-on-windows)
+
+## Next steps
+
+If you don't know what to do next, here are some ideas:
+
+- Use the [discord.js](https://discord.js.org/#/) documentation to implement things like buttons, modals (imput forms), context menu commands, select menus and more!
+- Use the discord api to implement multi-language support that fetches the language from the user's discord settings
+- Understand the basics of databases (e.g. SQL, mongoDB, etc.) to make data persistent
+  - e.g. you can store your data in a SQLite database using the [better-sqlite3](https://www.npmjs.com/package/better-sqlite3) package
+- Dockerize the project so you can easily deploy it and keep it up to date
+  - Implement a workflow that
+    - Builds a new docker image when pr gets pushed to a specific branch (for multiple platforms?)
+    - Pushes said images to the [Dockerhub](https://hub.docker.com)
+    - Checks for new images on the Dockerhub and restarts the bot if a new image is available using [watchtower](https://containrrr.dev/watchtower/)
+    - Use docker volumes to store the database and other data
+- Implement a web dashboard to manage your bot using discord.js's [OAuth2](https://discordjs.guide/oauth2/#oauth2) and [REST](https://discordjs.guide/rest-api/#rest-api) modules
+- Implement a logging system that logs all the bot's actions to a file or a database
 
 ## Install
 
