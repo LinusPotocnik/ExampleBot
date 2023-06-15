@@ -16,7 +16,7 @@ const create = () => {
 const invoke = (interaction) => {
 	const user = interaction.options.getUser('user');
 
-	if (user !== null) interaction.reply({ content: `Hello ${user}!` });
+	if (user !== null) interaction.reply({ content: `Hey ${user}!` });
 	else
 		interaction.reply({
 			content: 'Pong!',
