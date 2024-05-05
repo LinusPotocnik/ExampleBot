@@ -1,12 +1,10 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
-// Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
+// Creates an object with the data required by Discord's API to create a SlashCommand
 const create = () => {
 	const command = new SlashCommandBuilder()
 		.setName('server')
-		.setDescription(
-			'Replys with a small amount of information about this server!'
-		)
+		.setDescription('Replys with some basic information about this server!')
 		.setDMPermission(false);
 
 	return command.toJSON();
@@ -19,7 +17,7 @@ const invoke = (interaction) => {
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
 	const embed = new EmbedBuilder().setTitle(guild.name).addFields([
 		{
-			name: 'Members',
+			name: 'Membercount',
 			value: guild.memberCount.toString(),
 			inline: true,
 		},
@@ -33,18 +31,23 @@ const invoke = (interaction) => {
 			inline: true,
 		},
 		{
-			name: 'ID',
+			name: 'Guild ID',
 			value: guild.id,
 			inline: true,
 		},
 		{
-			name: 'AFK channel',
+			name: 'Voice AFK Channel',
 			value: guild.afkChannel?.name ?? 'None',
 			inline: true,
 		},
 		{
-			name: 'AFK timeout',
-			value: guild.afkTimeout.toString(),
+			name: 'Voice AFK Timeout',
+			// Timeout formatted as MM:SS
+			value: `${(guild.afkTimeout / 60).toString().padStart(2, '0')}:${(
+				guild.afkTimeout % 60
+			)
+				.toString()
+				.padStart(2, '0')}`, // You could implement a check whether the channel is even active
 			inline: true,
 		},
 		{
@@ -58,12 +61,12 @@ const invoke = (interaction) => {
 			inline: true,
 		},
 		{
-			name: 'Discord Partner',
+			name: 'Discord Partner Server',
 			value: guild.partnered ? 'Yes' : 'No',
 			inline: true,
 		},
 		{
-			name: 'Verified',
+			name: 'Verified Server',
 			value: guild.verified ? 'Yes' : 'No',
 			inline: true,
 		},
@@ -71,14 +74,13 @@ const invoke = (interaction) => {
 
 	// Edit some properties of the embed to make it a bit prettier
 	// Note: This could be done at the creation of the object, but I split it to make it a bit clearer
-	// #shamelessSelfpromotion
 	embed
 		.setColor('Aqua')
-		.setFooter({ text: 'Find the source code of this bot on our GitHub!' })
+		.setFooter({ text: 'Find the source code of this bot on my GitHub!' })
 		.setTimestamp()
 		.setAuthor({
-			name: 'Developed by LiFe Development',
-			url: 'https://github.com/LiFeDevelopment',
+			name: 'Developed by Linus Potocnik',
+			url: 'https://github.com/LinusPotocnik',
 			iconURL: 'https://avatars.githubusercontent.com/u/89026474?s=200&v=4',
 		})
 		.setImage(guild.iconURL());

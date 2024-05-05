@@ -1,6 +1,6 @@
 import { PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
 
-// Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
+// Creates an object with the data required by Discord's API to create a SlashCommand
 const create = () => {
 	const command = new SlashCommandBuilder()
 		.setName('clear')
@@ -20,24 +20,26 @@ const invoke = async (interaction) => {
 	const amount = interaction.options.getNumber('amount');
 
 	// Check if the user executing the command has the required permissions to do so
-	if (!interaction.member.permissions.has(PermissionFlagsBits.ManageMessages))
+	if (!interaction.member.permissions.has(PermissionFlagsBits.ManageMessages)) {
 		return interaction.reply({
 			content: 'You are not allowed to delete messages!',
 			ephemeral: true,
 		});
+	}
 
-	if (!interaction.appPermissions.has(PermissionFlagsBits.ManageMessages))
+	if (!interaction.appPermissions.has(PermissionFlagsBits.ManageMessages)) {
 		return interaction.reply({
 			content: 'I am not allowed to delete messages!',
 			ephemeral: true,
 		});
+	}
 
-	if (amount < 1)
-		// Check if the amount parameter is >= 1
+	if (amount < 1) {
 		return interaction.reply({
 			content: 'I must delete one or more messages!',
 			ephemeral: true,
 		});
+	}
 
 	// Delete the given amount of messages
 	const deletedMessages = (
@@ -47,10 +49,21 @@ const invoke = async (interaction) => {
 	).size;
 
 	// Reply with a confirmation
-	interaction.reply({
-		content: `I deleted ${deletedMessages} messages for you!`,
-		ephemeral: true,
-	});
+	if (deletedMessages < amount) {
+		const deleteFailureString =
+			`I deleted ${deletedMessages} messages for you! ` +
+			`Please note that Discord limits bots to messages no older than two weeks. ` +
+			`If you want to delete an entire channel's messages, you can copy the channel and delete the old one.`;
+		interaction.reply({
+			content: deleteFailureString,
+			ephemeral: true,
+		});
+	} else {
+		interaction.reply({
+			content: `I deleted ${deletedMessages} messages for you!`,
+			ephemeral: true,
+		});
+	}
 };
 
 export { create, invoke };

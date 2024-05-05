@@ -17,15 +17,16 @@ for (let event of events) {
 	// so the abbreviation is different to the #commands abbreviation
 	const eventFile = await import(`#events/${event}`);
 	// But first check if it's an event emitted once
-	if (eventFile.once)
+	if (eventFile.once) {
 		client.once(eventFile.name, (...args) => {
 			eventFile.invoke(...args);
 		});
-	else
+	} else {
 		client.on(eventFile.name, (...args) => {
 			eventFile.invoke(...args);
 		});
+	}
 }
 
-// Login with the environment data
+// Login with the credentials stored in .env
 client.login(process.env.BOT_TOKEN);
